@@ -1,8 +1,16 @@
-
 import { Linkedin, Globe, Award } from 'lucide-react';
 
 const Team = () => {
   const teamMembers = [
+    {
+      name: "Арина",
+      role: "CEO & Founder",
+      experience: "Эксперт в AI и инновациях",
+      background: "Основатель и визионер TechArina",
+      specialization: "Инновации, AI стратегии",
+      avatar: "/images/arina.JPG",
+      useImage: true
+    },
     {
       name: "Анна Волкова",
       role: "CEO & Co-Founder",
@@ -80,9 +88,19 @@ const Team = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Avatar */}
-                <div className="w-20 h-20 bg-gradient-to-r from-cyber-blue to-cyber-purple rounded-full flex items-center justify-center text-white font-bold text-xl mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                  {member.avatar}
-                </div>
+                {member.useImage ? (
+                  <div className="w-32 h-32 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={member.avatar} 
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-20 h-20 bg-gradient-to-r from-cyber-blue to-cyber-purple rounded-full flex items-center justify-center text-white font-bold text-xl mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    {member.avatar}
+                  </div>
+                )}
                 
                 {/* Name and role */}
                 <h3 className="text-xl font-bold text-foreground text-center mb-2">
