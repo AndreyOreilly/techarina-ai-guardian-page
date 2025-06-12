@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -39,7 +38,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 bg-card">
+    <section id="contact" className="py-20 bg-card">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}

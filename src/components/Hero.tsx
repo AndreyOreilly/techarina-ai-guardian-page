@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 
 const TechArinaLogo = () => (
@@ -15,8 +15,15 @@ const TechArinaLogo = () => (
 );
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center py-20">
+    <div className="relative min-h-screen bg-background flex items-center justify-center py-20">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo */}
@@ -48,19 +55,36 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 cyber-glow hover-scale"
+              className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 cyber-glow hover-scale group"
+              onClick={() => scrollToSection('contact')}
             >
-              Запросить консультацию
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <span className="flex items-center">
+                Запросить консультацию
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="text-lg px-8 py-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover-scale"
+              className="text-lg px-8 py-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover-scale group"
+              onClick={() => scrollToSection('about')}
             >
-              Узнать больше
+              <span className="flex items-center">
+                Узнать больше
+                <ChevronDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              </span>
             </Button>
           </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-fade-in cursor-pointer"
+           onClick={() => scrollToSection('about')}
+           style={{ animationDelay: "0.9s" }}>
+        <span className="text-muted-foreground text-sm mb-2">Листайте вниз</span>
+        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
     </div>
